@@ -38,11 +38,8 @@ export default class Customise extends React.Component {
         <main>
           <h1>Customise {label}</h1>
 
-          { submitted ? 
-            <p>Updated! <Link to={'/?station='+station}>record</Link> a value</p>
-          : 
-          <form onSubmit={this.onSubmit}>
-
+          { submitted ? <p>Updated! <Link to={'/?station='+station}>record</Link> a value</p>
+          : <form onSubmit={this.onSubmit}>
             <label htmlFor="label">Label</label>
             <input type="text" name="label" value={label} onChange={this.onChange} /><br /><br />
             <label htmlFor="units">Units</label>
