@@ -58,21 +58,26 @@ export default function Dashboard() {
       <ul className="dashboard">
         {stations.map((station, key) => (
           <li key={key} className="dashboard-item">
+
+            <div className="dashboard-item_frame">
             
-            <Heading 
-              display="inline" 
-              text = { station } 
-              sup = { groupedLabels[station].length } />
+              <Heading 
+                display="inline" 
+                text = { station } 
+                sup = { groupedLabels[station].length } />
 
-            <Graph 
-              width = "320px" 
-              title = { station } 
-              data = { groupedLabels[station] } />
+              <Graph 
+                width = "320px" 
+                title = { station } 
+                data = { groupedLabels[station] } />
 
-            <span>
-            + <a href={'./?station=' + station}>Record</a>
-            + <Link to={'./more?station=' + station}>Show More</Link>
-            </span>
+              <span>
+              + <a href={'./?station=' + station}>Record</a>
+              + <Link to={'./more?station=' + station}>Show More</Link>
+              </span>
+
+            </div>
+
           </li>
         ))}
 
