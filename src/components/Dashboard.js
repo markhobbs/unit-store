@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Graph from './Graph';
-import Heading from './Heading';
+import StationLabel from './StationLabel';
 
 export default function Dashboard() {
   const [values, setValues] = useState([]);
@@ -61,10 +61,12 @@ export default function Dashboard() {
 
             <div className="dashboard-item_frame">
             
-              <Heading 
-                display="inline" 
-                text = { station } 
-                sup = { groupedLabels[station].length } />
+              <h2>
+                <StationLabel 
+                  display="inline" 
+                  text = { station } 
+                  sup = { groupedLabels[station].length } />
+              </h2>
 
               <Graph 
                 width = "320px" 

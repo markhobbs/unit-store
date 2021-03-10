@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Graph from './Graph';
-import Heading from './Heading';
+import StationLabel from './StationLabel';
 
 let search = window.location.search;
 let params = new URLSearchParams(search);
@@ -60,11 +60,14 @@ export default function More() {
           <li key={key} className="dashboard-item">
 
             <div className="dashboard-item_frame">
-              <Heading
-                display="inline" 
-                text = { station } 
-                sup = { groupedLabels[station].length } />
-                
+              
+              <h2>
+                <StationLabel 
+                  display="inline" 
+                  text = { station } 
+                  sup = { groupedLabels[station].length } />
+              </h2>
+
               <Graph width="320px" title={station} data={groupedLabels[station]} />
               + <a href={'./?station=' + station}>Record</a> + <Link to={'./Dashboard'}>Back</Link> 
             </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /* Heading */
-export default function Heading(props) {
+export default function StationLabel(props) {
     const [values, setValues] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -30,12 +30,14 @@ export default function Heading(props) {
       if (error) return "Oops!";
     
     return (
-        <span>
-            <h2 
-                className={inline}>
-                { values['labelCustom'] ? values['labelCustom'] : values['label'] } ({values['unitCustom']})
-            </h2>
-            <sup> {sup} rec(s)</sup>
+        <span className={inline}>
+          { values['labelCustom'] 
+            ? values['labelCustom'] 
+            : values['label'] } { 
+              values['unitCustom'] === '' ? '' : values['unitCustom']
+          }
+
+          { sup ? <sup> {sup} rec(s)</sup> : ""}
         </span>
     )
 }
