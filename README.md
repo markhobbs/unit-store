@@ -6,7 +6,7 @@ Mongo Express, Node Api Backend, with a ReactJS frontend UI.
 Clone project and build containers with Docker.
 ```docker-compose up -d --build```
 
-## alLoc Start
+## Local Start
 Mongojs Required. Running the backend. 
 ```cd backend``` 
 ```npm install```
