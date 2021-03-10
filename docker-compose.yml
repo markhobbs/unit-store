@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  stations: 
+    build: ./
+    ports:
+      - "3000:3000" 
+    links:
+      - mongodb
+    volumes:
+      - .:/usr/app/
+      - /app/node_modules
+    depends_on:
+      - mongodb
+
+  api: 
+    build: ./backend
+    ports:
+      - "3001:3001" 
+    links:
+      - mongodb
+    volumes:
+      - .:/usr/app/
+      - /app/node_modules
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodb:

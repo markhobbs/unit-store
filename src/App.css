@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+main {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0
+}
+
+p, label, a, button, input { 
+  font-size: 1.1em;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: grey;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input, button {
+  text-align: center;
+}
+
+input, label {
+  margin-right: 4px;
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+}
+
+button {
+  background-color: aquamarine;
+  border: 1px solid grey;
+  margin-top: 4px;
+  font-size: 1em;
+
+}
+
+form {
+  text-align: center;
+}
+
+
+ul.dashboard {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.dashboard-item{
+  background-color :#3e434e;
+  border: 1px solid white;
+  display: block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 8px;
+  width: 300px;
+  overflow:hidden;
+}
+
+.graph {
+  margin: 10px 0;
+}
+.logs, .dashboard{
+  list-style: none;
+}
