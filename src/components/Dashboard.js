@@ -48,7 +48,11 @@ export default function Dashboard() {
   return (
     <main>
       <h1>Dashboard</h1>
-      <p>Latest 10 record(s) from each station.</p>
+
+      { stations.length > 0  
+        ? <p>Latest 10 record(s) from each station.</p> 
+        : <p>No records as yet. First create a <Link to='./'>station</Link>.</p> 
+      }
       
       <ul className="dashboard">
         {stations.map((station, key) => (
@@ -56,10 +60,12 @@ export default function Dashboard() {
             <h2>{station} <small><em>{groupedLabels[station].length} item(s)</em></small></h2>
             <Graph width="320px" title={station} data={groupedLabels[station]} />
             <span>
-             + <Link to={'./?station=' + station}>Record</Link> + <Link to={'./more?station=' + station}>Show More</Link>
+            + <a href={'./?station=' + station}>Record</a>
+            + <Link to={'./more?station=' + station}>Show More</Link>
             </span>
           </li>
         ))}
+
       </ul>
     </main>
   ) 

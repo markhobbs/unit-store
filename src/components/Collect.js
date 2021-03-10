@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-//TODO Get rid of qs
+// UTILS
+import generateStationLabel from '../utils/generateStationLabel';
+//import getQS from '../utils/getQS'; //TODO Get rid of qs
 let search = window.location.search;
 let params = new URLSearchParams(search);
 let qsStation = params.get('station') || '';
@@ -21,7 +23,7 @@ export default class Collect extends React.Component {
   //this.setState({ station : resp.label });
 
   /* Using the Station db*/
-  componentWillMount = () => {
+  componentDidMount = () => {
     // Is the Station New?
     fetch( process.env.REACT_APP_API_ENDPOINT + '/stations/' + qsStation )
     .then ( (response) => { return response.json();  })
@@ -57,23 +59,21 @@ export default class Collect extends React.Component {
     const { value, submitted/*,email*/ } = this.state;
     return (
       <main>
-
         { (qsStation !== "") ? 
         // Check if already registered
         !this.state.existing 
           ? this.state.existing ||    
-            <h1>Register Station <Link to={ '/customise?station=' + qsStation }>here</Link>.</h1>
+            <h1>Register your station <Link to={ '/customise?station=' + qsStation }>here</Link>.</h1>
           : <h1>
             { this.state.stationCustom 
               ? this.state.stationCustom 
-              : this.state.station } {!this.state.unitCustom || this.state.unitCustom }
+              : this.state.station } ({!this.state.unitCustom || this.state.unitCustom })
             </h1>
-
-        : <p>Please supply a station ie <a href="?station=Demo">?station=Demo</a></p>
+        : <p>Create new <a href={"?station="+generateStationLabel(16,8)}>station</a> </p>
         }
 
         { submitted ? 
-          <p>Updated! visit <Link to='/dashboard'>dashboard</Link></p>
+          <p>Recorded! Return to <Link to='/dashboard'>dashboard</Link>.</p>
           : 
           qsStation === ""  ||
           <form onSubmit={this.onSubmit}>

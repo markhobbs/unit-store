@@ -36,10 +36,10 @@ export default class Customise extends React.Component {
       const { label, submitted/*units*/ } = this.state;
       return (
         <main>
-          <h1>Customise {station}</h1>
+          <h1>Customise {label}</h1>
 
           { submitted ? 
-            <p>Updated! record a value<Link to='/?{station}'>here</Link></p>
+            <p>Updated! <Link to={'/?station='+station}>record</Link> a value</p>
           : 
           <form onSubmit={this.onSubmit}>
 

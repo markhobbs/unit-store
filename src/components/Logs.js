@@ -33,7 +33,12 @@ export default function Logs() {
   return (
     <main>
       <h1>Logs</h1>
-      <p>Total of {values.length} record(s)</p>
+      
+      { values.length > 0  
+        ? <p>Total of {values.length} record(s)</p> 
+        : <p>No records as yet. First create a <Link to='./'>station</Link>.</p> 
+      }
+
       <ul className="logs">
         { values.map((value) => (
           <li key={value._id} className="log-item">
