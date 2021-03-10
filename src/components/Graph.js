@@ -7,20 +7,19 @@ export default function Graph(props) {
   let plotsReducer = plots.map(plot => { return [plot.value, plot.created] });
   return (
     <div className="graph">
-        
         {/*<h1>{props.title}</h1>*/}
         <ul>
           {plotsReducer.map((plot, key) => (
-              <li key={key} 
+              <li className={plot[0] < 0 ? "graph-item graph-item--negative" : "graph-item"} key={key} 
                   style={{
                     paddingLeft : '4px', 
                     opacity : 0.5, 
-                    'width' : plot[0]+'px', 
-                    'border' : '1px solid white', 
-                    'background': 'darkgreen' 
+                    'width' : plot[0]+'px',
+                    'border' : '1px solid white' 
                   }}>
-                  <small style={{'position':'absolute'}}>
-                    <span>{plot[0]} :: {moment(plot[1], "YYYYMMDD").format('LLL')} </span>
+                  <small 
+                    style={{'position':'absolute'}}>
+                    <span>{plot[0]} :: {moment(plot[1], "YYYYMMDD").format('LLL')}</span>
                   </small>
               </li>
           ))}

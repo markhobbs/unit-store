@@ -45,14 +45,14 @@ export default class Collect extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
     // get our form data out of state
-    const { value, /*lname, email*/ } = this.state;
+    const { value } = this.state;
     fetch(process.env.REACT_APP_API_ENDPOINT + '/values', { 
       method: 'POST', 
       headers : { 'Content-Type': 'application/json','Accept': 'application/json'}, 
       body: JSON.stringify( { "value" : value, "label" : qsStation } ) //body: JSON.stringify(this.state)  //body: JSON.stringify( { "value" : fname, "label" : lname } )
     })
-    .then( response => { return response.json() })
-    .then( response => { this.setState({ submitted : true }) })
+    .then( (response) => { return response.json() })
+    .finally( () => { this.setState({ submitted : true }) });
   }
 
   render() {
