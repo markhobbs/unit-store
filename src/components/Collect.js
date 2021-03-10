@@ -69,7 +69,7 @@ export default class Collect extends React.Component {
               ? this.state.stationCustom 
               : this.state.station } ({!this.state.unitCustom || this.state.unitCustom })
             </h1>
-        : <p>Create new <a href={"?station="+generateStationLabel(16,8)}>station</a> </p>
+        : <p>View <Link to='/dashboard'>dashboard</Link>. Or create a new <a href={"?station="+generateStationLabel(16,8)}>station</a>.</p>
         }
 
         { submitted ? 
