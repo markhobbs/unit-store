@@ -47,11 +47,9 @@ const StyledMenu = styled.nav`
 const MenuItems = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <Link to="/">Collect</Link>
+      <a href="/">Create Station</a>
       <Link to="/dashboard">Dashboard</Link>
       <Link to="/logs">Logs</Link>
-      <hr /> :: <hr />
-      <a href='/?station=demo'>?station=demo</a>
     </StyledMenu>
   )
 }
