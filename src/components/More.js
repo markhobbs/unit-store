@@ -62,7 +62,8 @@ export default function More() {
               <small>&nbsp;<em>{groupedLabels[station].length} item(s)</em></small>
             </h2>
             <Graph width="320px" title={station} data={groupedLabels[station]} />
-            + <Link to={'./?station=' + station}>Record</Link> + <Link to={'./Dashboard'}>Back</Link> 
+              + <a href={'./?station=' + station}>Record</a>
+              + <Link to={'./Dashboard'}>Back</Link> 
           </li>
         ))}
       </ul>

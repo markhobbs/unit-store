@@ -22,13 +22,21 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
+.inline {
+  display: inline;
+}
+
 ul {
   padding: 0;
   margin: 0
 }
 
-p, label, a, button, input { 
+p, label, a, button, select, input { 
   font-size: 1.1em;
+}
+
+select {
+  text-align: center;
 }
 
 a {
@@ -53,20 +61,31 @@ input, button {
 }
 
 input, label {
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 label {
-  display: block;
-  margin-top: 8px;
+  /*display: block;*/
+  margin-top: 12px;
+}
+
+input, #units {
+  /*display: block;*/
+  height: 30px;
+  min-width: 300px;
+}
+
+ #units {
+  /*display: block;*/
+  height: 32px;
+  min-width: 305px;
 }
 
 button {
   background-color: aquamarine;
   border: 1px solid grey;
-  margin-top: 4px;
-  font-size: 1em;
-
+  font-size: 1.3em;
+  padding: 8px 16px;
 }
 
 form {

@@ -44,10 +44,10 @@ export default class Customise extends React.Component {
           <form onSubmit={this.onSubmit}>
 
             <label htmlFor="label">Label</label>
-            <input type="text" name="label" value={label} onChange={this.onChange} />
+            <input type="text" name="label" value={label} onChange={this.onChange} /><br /><br />
             <label htmlFor="units">Units</label>
             <select name="units" id="units" onChange={this.onChange}>
-              <option>----- Area -----</option>
+              <option>-------------- Area --------------</option>
               <option value="mm2">Millimetre square(mm2)</option>
               <option value="cm2">Centimetre square(cm2)</option>
               <option value="in2">Square inch(in2)</option>
@@ -58,7 +58,7 @@ export default class Customise extends React.Component {
               <option value="h2">Hectare Square</option>
               <option value="km2">Kilometre(km2)</option>	
               <option value="mi2">Square mile(mi2)</option>
-              <option>----- Length -----</option>           
+              <option>-------------- Length --------------</option>           
               <option value="mm">Millimetre(mm)</option>
               <option value="cm">Centi-metre(cm)</option>
               <option value="in">Inch(in)</option>
@@ -67,11 +67,11 @@ export default class Customise extends React.Component {
               <option value="m">Metre(m)</option>
               <option value="km">Kilo-metre(km)	</option>
               <option value="mi">Mile(mi)</option>
-              <option value="">-----Temp-----</option>
+              <option value="">-------------- Temp --------------</option>
               <option value="c">Degree Celsius(°C)	</option>
               <option value="f">Degree Fahrenheit(°F)</option>	
               <option value="k">Kelvin(K)</option>
-              <option>----- Time -----</option>
+              <option>-------------- Time --------------</option>
               <option value="ms">Milli-second</option>
               <option value="s">Seconds(s)</option>
               <option value="m">Minutes	</option>
@@ -82,7 +82,7 @@ export default class Customise extends React.Component {
               <option value="y">Year</option>	
               <option value="d">Decade	</option>
               <option value="c">Century</option>
-              <option>----- Speed -----</option>
+              <option>-------------- Speed --------------</option>
               <option value="mm2">Foot/minute (ft/min)</option>	
               <option value="mm2">Metre/minute (m/min)</option>	
               <option value="mm2">Kilometre/hour (km/h)	</option>
@@ -90,12 +90,12 @@ export default class Customise extends React.Component {
               <option value="mm2">Miles/hour (mi/h)	</option>
               <option value="mm2">Knot	</option>
               <option value="mm2">Metre/second (m/s)</option>
-              <option>----- Volume -----</option>
+              <option>-------------- Volume --------------</option>
               <option value="ml">Milli-leter(ml)</option>
               <option value="l">Litre(l) </option>  
               <option value="gal">gallons(gal)</option>
               <option value="m3">cubic metre(m3)</option>
-              <option>-----Weight -----</option>
+              <option>-------------- Weight --------------</option>
               <option value="mg">Milligram(mg) </option>
               <option value="g">Grams(g)</option>
               <option value="oz">Ounces(oz)</option>

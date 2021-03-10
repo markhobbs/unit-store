@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Graph from './Graph';
+import Heading from './Heading';
 
 export default function Dashboard() {
   const [values, setValues] = useState([]);
@@ -57,8 +58,17 @@ export default function Dashboard() {
       <ul className="dashboard">
         {stations.map((station, key) => (
           <li key={key} className="dashboard-item">
-            <h2>{station} <small><em>{groupedLabels[station].length} item(s)</em></small></h2>
-            <Graph width="320px" title={station} data={groupedLabels[station]} />
+            
+            <Heading 
+              display="inline" 
+              text = { station } 
+              sup = { groupedLabels[station].length } />
+
+            <Graph 
+              width = "320px" 
+              title = { station } 
+              data = { groupedLabels[station] } />
+
             <span>
             + <a href={'./?station=' + station}>Record</a>
             + <Link to={'./more?station=' + station}>Show More</Link>
