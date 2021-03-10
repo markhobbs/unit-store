@@ -83,12 +83,12 @@ export default class Collect extends React.Component {
               name="value"
               value={value}
               onChange={this.onChange}
-            /><br />
-              <button 
-                type="submit" 
-                disabled={!value}>
-                Submit
-              </button>
+            />
+            <button 
+              type="submit" 
+              disabled={!value}>
+              Submit
+            </button>
             {/*<input type="text" name="email" value={email} onChange={this.onChange}/>*/}
           </form>
         }
