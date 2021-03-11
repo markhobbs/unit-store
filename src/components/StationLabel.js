@@ -31,13 +31,9 @@ export default function StationLabel(props) {
     
     return (
         <span className={inline}>
-          { values['labelCustom'] 
-            ? values['labelCustom'] 
-            : values['label'] } { 
-              values['unitCustom'] === '' ? '' : values['unitCustom']
-          }
-
-          { sup ? <sup> {sup} rec(s)</sup> : ""}
+          { values['labelCustom'] ? values['labelCustom'] : values['label'] } 
+          { values['unitCustom'] === '' ? '' : ' ('+values['unitCustom']+')' }
+          { sup ? <sup><small> {sup} rec(s)</small></sup> : "" }
         </span>
     )
 }

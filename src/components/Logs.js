@@ -44,7 +44,7 @@ export default function Logs() {
         { values.map((value) => (
           <li key={value._id} className="log-item">
 
-            {value.value}
+            <h3 className="inline">{value.value} </h3>
 
             <a href={'./?station=' + value.label}>
               <StationLabel 
@@ -52,7 +52,7 @@ export default function Logs() {
                 text = { value.label } />
             </a>
 
-            <small>{moment(value.created).format('LLLL')}</small>
+            <small> {moment(value.created).format('LLLL')}</small>
             
           </li>
         ))}

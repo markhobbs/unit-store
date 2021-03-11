@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import StationLabel from './StationLabel';
 
 // UTILS
 import generateStationLabel from '../utils/generateStationLabel';
@@ -59,18 +60,13 @@ export default class Collect extends React.Component {
     const { value, submitted/*,email*/ } = this.state;
     return (
       <main>
-        { (qsStation !== "") ? 
-        // Check if already registered
-        !this.state.existing 
-          ? this.state.existing ||    
-            <h1>Register your station <Link to={ '/customise?station=' + qsStation }>here</Link>.</h1>
-          : <h1>
-            { this.state.stationCustom 
-              ? this.state.stationCustom 
-              : this.state.station } ({!this.state.unitCustom || this.state.unitCustom })
-            </h1>
-        : <p>View <Link to='/dashboard'>dashboard</Link>. Or create a new <a href={"?station="+generateStationLabel(16,8)}>station</a>.</p>
-        }
+        { this.state.station ? 
+          <h1>b<StationLabel display="inline" text = { this.state.station }  /></h1> : 
+          <span>
+            { this.state.existing || <h1>Register your station <Link to={ '/customise?station=' + qsStation }>here</Link>.</h1>}
+            { !this.state.existing || <p>View <Link to='/dashboard'>dashboard</Link>. Or create a new <a href={"?station="+generateStationLabel(16,8)}>station</a>.</p>}
+          </span>
+        }  
 
         { submitted ? 
           <p>Recorded! Return to <Link to='/dashboard'>dashboard</Link>.</p>
