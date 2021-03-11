@@ -19,7 +19,7 @@ export default function Graph(props) {
                   }}>
                   <small 
                     style={{'position':'absolute'}}>
-                    <span>{plot[0]} :: {moment(plot[1], "YYYYMMDD").format('LLL')}</span>
+                    <span>{plot[0]} :: {moment(plot[1]).format('LLLL')}</span>
                   </small>
               </li>
           ))}
