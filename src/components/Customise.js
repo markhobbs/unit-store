@@ -96,6 +96,9 @@ export default class Customise extends React.Component {
               
               <label htmlFor="unit">Units</label>
               <select name="unit" id="unit" onChange={this.onChange}>
+                <option value="">-------------- Choose Unit --------------</option>
+                <option value="p">Percentage(%)</option>
+
                 <option>-------------- Area --------------</option>
                 <option value="mm2">Millimetre square(mm2)</option>
                 <option value="cm2">Centimetre square(cm2)</option>
