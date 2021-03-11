@@ -61,7 +61,7 @@ export default class Collect extends React.Component {
     return (
       <main>
         { this.state.station ? 
-          <h1>b<StationLabel display="inline" text = { this.state.station }  /></h1> : 
+          <h1><StationLabel display="inline" text = { this.state.station }  /></h1> : 
           <span>
             { this.state.existing || <h1>Register your station <Link to={ '/customise?station=' + qsStation }>here</Link>.</h1>}
             { !this.state.existing || <p>View <Link to='/dashboard'>dashboard</Link>. Or create a new <a href={"?station="+generateStationLabel(16,8)}>station</a>.</p>}

@@ -106,4 +106,4 @@ react-app-env.d.ts
 # TernJS port file
 .tern-port
 
-builds
+build
