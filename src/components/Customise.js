@@ -93,12 +93,11 @@ export default class Customise extends React.Component {
             <p>Updated! <Link to={'/?station='+station}>record</Link> a value</p>
           : 
           <form onSubmit={this.onSubmit}>
-              <label htmlFor="label">Label</label>
-              <input type="text" name="label" value={label} onChange={this.onChange} /><br /><br />
-              {/*<div className={ 'form-group '+this.errorClass(this.state.formErrors.label) }>Label Required</div>*/}
-              
-              <label htmlFor="unit">Units</label>
-              <Select onchange={this.onChange} />
+            <label htmlFor="label">Label</label>
+            <input type="text" name="label" value={label} onChange={this.onChange} /><br /><br />
+            {/*<div className={ 'form-group '+this.errorClass(this.state.formErrors.label) }>Label Required</div>*/}
+            <label htmlFor="unit">Units</label>
+            <Select onchange={this.onChange} />
             {/*<div className={ 'form-group '+this.errorClass(this.state.formErrors.unit) }>Unit Required</div>*/}
             <br /><br />
             <button type="submit" disabled={!this.state.formValid}>Submit</button> or <Link to='/'>cancel</Link>
