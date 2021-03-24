@@ -33,7 +33,7 @@ export default function StationLabel(props) {
         <span className={inline}>
           { values['labelCustom'] ? values['labelCustom'] : values['label'] } 
           { values['unitCustom'] === '' ? '' : ' ('+values['unitCustom']+')' }
-          { sup ? <sup><small> {sup} rec(s)</small></sup> : "" }
+          <br />{ sup ? <sup><small> {sup} rec(s)</small></sup> : "" }
         </span>
     )
 }

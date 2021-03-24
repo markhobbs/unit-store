@@ -50,7 +50,7 @@ export default class Collect extends React.Component {
     fetch(process.env.REACT_APP_API_ENDPOINT + '/values', { 
       method: 'POST', 
       headers : { 'Content-Type': 'application/json','Accept': 'application/json'}, 
-      body: JSON.stringify( { "value" : value, "label" : qsStation } ) //body: JSON.stringify(this.state)  //body: JSON.stringify( { "value" : fname, "label" : lname } )
+      body: JSON.stringify( { "value" : value, "label" : qsStation } ) 
     })
     .then( (response) => { return response.json() })
     .finally( () => { this.setState({ submitted : true }) });
@@ -75,8 +75,9 @@ export default class Collect extends React.Component {
           <form onSubmit={this.onSubmit}>
             <label>Record</label>
             <input
-              type="number"
               name="value"
+              type="number" 
+              step="0.01" //min="0"
               value={value}
               onChange={this.onChange}
             />
@@ -85,7 +86,6 @@ export default class Collect extends React.Component {
               disabled={!value}>
               Submit
             </button>
-            {/*<input type="text" name="email" value={email} onChange={this.onChange}/>*/}
           </form>
         }
       </main>

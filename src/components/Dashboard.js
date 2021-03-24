@@ -51,7 +51,7 @@ export default function Dashboard() {
       <h1>Dashboard</h1>
 
       { stations.length > 0  
-        ? <p>Latest 10 record(s) from each station.</p> 
+        ? <p>Latest 30 record(s) from each station.</p> 
         : <p>No records as yet. First create a <Link to='./'>station</Link>.</p> 
       }
       
