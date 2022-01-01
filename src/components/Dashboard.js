@@ -74,8 +74,7 @@ export default function Dashboard() {
                 data = { groupedLabels[station] } />
 
               <span>
-              + <a href={'./?station=' + station}>Record</a>
-              + <Link to={'./more?station=' + station}>Show More</Link>
+                [ <a href={'./?station=' + station}>+ Record</a> ] [ <Link to={'./more?station=' + station}>+ Show More</Link> ]
               </span>
 
             </div>

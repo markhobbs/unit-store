@@ -80,9 +80,14 @@ ul.dashboard {
 .dashboard-item_frame {
   padding:10px;
 }
+
+.dashboard-item_frame a {
+  text-decoration: none;
+  text-transform : uppercase;
+}
 @media (min-width: 480px)  { 
   .dashboard-item {
-    width: 300px;
+    width: 33%;
   }
   ul.dashboard {
     display:flex;

@@ -1,4 +1,5 @@
-FROM node:13.12.0-alpine
+# FROM node:13.12.0-alpine
+FROM node:10-slim
 # set a health check
 #HEALTHCHECK --interval=5s \
 #            --timeout=5s \
