@@ -7,7 +7,11 @@ var schema = new mongoose.Schema({
         default: '' 
     },
     value: {
-        type: String,
+        type: Number,
+        default: '' 
+    },
+    value2: {
+        type: Number,
         default: '' 
     },
     created: Date 

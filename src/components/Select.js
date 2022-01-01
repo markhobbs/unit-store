@@ -8,6 +8,7 @@ export default function Select(props) {
     return <select name="unit" id="unit" onChange={props.onchange}>
             <option value="">-------------- Choose Unit --------------</option>
             <option value="%">Percentage(%)</option>
+            <option value="*">Coords(*)</option>
             <option>-------------- Area --------------</option>
             <option value="mm2">Millimetre square(mm2)</option>
             <option value="cm2">Centimetre square(cm2)</option>

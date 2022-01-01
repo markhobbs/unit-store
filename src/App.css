@@ -48,6 +48,7 @@ input, button {
 }
 input, label {
   margin-right: 8px;
+  margin-bottom: 8px;
 }
 label {
   /*display: block;*/

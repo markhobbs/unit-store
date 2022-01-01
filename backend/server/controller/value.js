@@ -118,6 +118,7 @@ class Value {
     constructor(valueData) {
         this.label = valueData.label || '';
         this.value = valueData.value || '';
+        this.value2 = valueData.value2 || '';
         this.created = valueData.created || '';
     }
 }
