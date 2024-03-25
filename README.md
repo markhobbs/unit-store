@@ -1,22 +1,26 @@
-# MERN DEMO
-Allows for the inputing cronological data values using REST.
+# Unit Store
+Allows for inputing of cronological data values using REST.
 Mongo Database, Express Api Backend, with a ReactJS frontend.
 
 ## Quick Docker Start 
-Clone project and build containers with Docker.
+Clone the project and build containers using Docker.
 ```npm install && cd backend && npm install```
+
 ```docker-compose up -d --build```
 
 ## Local Start
 Install MongoDB locally and set the backend mongoose.connect to localhost
 ```npm install && cd backend && npm install```
+
 ```npm start```
-Then the client. Open a new terminal 
+
+Then the client. Open a new terminal.
+
 ```npm start```
 
 ## API Endpoints
 
-### GET stations & Values
+### GET View Stations & Values
 http://localhost:3001/stations
 
 http://localhost:3001/stations/count
@@ -30,7 +34,7 @@ http://localhost:3001/values/count
 http://localhost:3001/values/{ label }
 
 
-### POST stations
+### POST Create Stations
 http://localhost:3001/stations/
 
 headers { 
@@ -44,7 +48,7 @@ body {
     "unitCustom" : { unitCustom } 
 }
 
-### POST values
+### POST Create Values
 http://localhost:3001/values/
 
 headers { 
