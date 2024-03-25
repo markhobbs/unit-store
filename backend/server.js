@@ -1,7 +1,3 @@
-/* Backend API Service */
-// Configs
-const config = require('./config.js'), CONFIG = new config();
-// Secure Express and optimize
 const express = require('express');
 const compression = require('compression')
 const helmet = require('helmet');
@@ -14,7 +10,6 @@ app.use(cors());
 const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-//const logger = require('morgan');
 const fs = require('fs');
 const http = require('http');
 
@@ -32,16 +27,6 @@ const valuesRouter = require('./server/routes/values');
 // View Engine
 app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'ejs');
-
-// Use application-level middleware for common functionality, including
-// logging, parsing, and session handling.
-if (app.get('env') === 'production') {
-  // create a write stream (in append mode)
-  let accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
-  app.use(require('morgan')('combined', { stream: accessLogStream }))
-} else {
-  app.use(require('morgan')('dev'));
-}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import StationLabel from './StationLabel';
@@ -43,17 +44,13 @@ export default function Logs() {
       <ul className="logs">
         { values.map((value) => (
           <li key={value._id} className="log-item">
-
             <h3 className="inline">{value.value} </h3>
-
             <a href={'./?station=' + value.label}>
               <StationLabel 
                 display="inline" 
                 text = { value.label } />
             </a>
-
-            <small> {moment(value.created).format('LLLL')}</small>
-            
+            <small>{ moment(value.created).format('LLLL') }</small>
           </li>
         ))}
        </ul>

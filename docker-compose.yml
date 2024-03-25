@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   stations: 
     build: ./
     ports:
@@ -12,7 +11,6 @@ services:
       - /app/node_modules
     depends_on:
       - mongodb
-
   api: 
     build: ./backend
     ports:
@@ -24,12 +22,10 @@ services:
       - /app/node_modules
     depends_on:
       - mongodb
-
   mongodb:
     image: mongo:latest
     container_name: "mongodb"
     ports:
       - "27017:27017"
-
 volumes:
   mongodb:

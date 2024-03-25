@@ -9,10 +9,6 @@ exports.create = (req, res, next) => {
         res.status(400).send('Station label is required');
         return;
     }
-    /*if (!body.body) {
-        res.status(400).send('Station Body is required');
-        return;
-    }*/
     if (!body.created) {
         body.created =  Date.now();
     }
@@ -70,8 +66,6 @@ exports.list = (req, res) => {
  exports.findOne = (req, res) => {
     let params = req.params || {};
     let query = { label: params.station };
-    //console.log(params)
-    //console.log(query)
     if (!query) {
         res.status(400).send('Bad Request');
         return;

@@ -5,10 +5,6 @@ var valueService = require('../service/value');
  */
 exports.create = (req, res) => {
     var body = new Value(req.body);
-    /*if (!body.label) {
-        res.status(400).send('Value label is required');
-        return;
-    }*/
     if (!body.created) {
         body.created =  Date.now();
     }
@@ -42,7 +38,7 @@ exports.count = (req, res) => {
 }
     
 /**
- * Function to find upload from uploads collection.
+ * Lists all values in collection
  */
 exports.list = (req, res) => {
     valueService.listValues((error, response) => {
@@ -66,8 +62,6 @@ exports.list = (req, res) => {
  exports.findOne = (req, res) => {
     let params = req.params || {};
     let query = { label: params.station };
-    //console.log(params)
-    //console.log(query)
     if (!query) {
         res.status(400).send('Bad Request');
         return;
@@ -93,8 +87,6 @@ exports.list = (req, res) => {
  exports.findAll = (req, res) => {
     let params = req.params || {};
     let query = { label: params.station };
-    //console.log(params)
-    //console.log(query)
     if (!query) {
         res.status(400).send('Bad Request');
         return;
@@ -118,7 +110,6 @@ class Value {
     constructor(valueData) {
         this.label = valueData.label || '';
         this.value = valueData.value || '';
-        this.value2 = valueData.value2 || '';
         this.created = valueData.created || '';
     }
 }

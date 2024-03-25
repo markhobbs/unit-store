@@ -29,7 +29,7 @@
      * @param {*} callback callback function.
      */
     exports.listValues = (callback) => {
-        value.find().exec(callback) 
+        value.find().sort('-created ').exec(callback) 
     };
 
     /**
@@ -59,7 +59,7 @@
      * @param {*} callback callback function
      */
     exports.findValues = (query, callback) => {
-        value.find(query, callback);   
+        value.find(query, callback).sort('-created ');  
     }
  
 })();

@@ -1,54 +1,46 @@
 import React from "react";
-import styled from 'styled-components';
+import { useState } from "react";
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-const StyledMenu = styled.nav`
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #EFFFFA;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-  height: 100vh;
-  text-align: left;
-  padding: 2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease-in-out;
-  width: 50%;
+import generateStationLabel from '../utils/generateStationLabel';
 
-  @media (max-width: 576px) {
-      //width: 100%;
-      width: 80%;
-  }
-
-  a {
-    font-size: 1rem;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
-    color: #0D0C1D;
-    text-decoration: none;
-    transition: color 0.3s linear;
-
-    @media (max-width: 576px) {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    &:hover {
-      color: #343078;
-    }
-  }
-`
-
-const MenuItems = ({ open }) => {
+const Burger = ({ open, setOpen }) => {
   return (
-    <StyledMenu open={open}>
-      <a href="/">Create Station</a>
-      <Link to="/dashboard">Dashboard</Link>
+    <StyledBurger 
+      open={open} 
+      onClick={ () => setOpen(!open) }
+      >
+      <div />
+      <div />
+      <div />
+    </StyledBurger>
+  )
+}
+
+const Menu = () => {
+  const [open, setOpen] = useState(false);
+  const node = React.useRef();
+
+  return (
+    <div data-testid="menu">
+      <div ref={node}>
+        <Burger open={open} setOpen={setOpen} />
+        <MenuItems open={open} setOpen={setOpen} />
+      </div>
+    </div>
+  )  
+}
+
+const MenuItems = ({ open, setOpen }) => {
+  let station = generateStationLabel(16, 20)
+  return (
+    <StyledMenu 
+      onClick={ () => setOpen(!open) } 
+      open={open}
+    >
+      <Link to="/dashboard">Stations Dashboard</Link>
+      <a href={ '/station?station=' + station }>Create a new station</a>
       <Link to="/logs">Logs</Link>
     </StyledMenu>
   )
@@ -96,46 +88,46 @@ const StyledBurger = styled.button`
     }
   }
 `
+const StyledMenu = styled.nav`
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #EFFFFA;
+  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  height: 100vh;
+  text-align: left;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  width: 50%;
 
-const Burger = ({ open, setOpen }) => {
-  return (
-    <StyledBurger open={open} onClick={() => setOpen(!open)}>
-      <div />
-      <div />
-      <div />
-    </StyledBurger>
-  )
-}
+  @media (max-width: 576px) {
+      //width: 100%;
+      width: 80%;
+  }
 
-const Menu = () => {
-  const [open, setOpen] = React.useState(false);
-  const node = React.useRef();
-  return (
-    <div data-testid="menu">
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <MenuItems open={open} setOpen={setOpen} />
-      </div>
-    </div>
-  )  
-}
+  a {
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #0D0C1D;
+    text-decoration: none;
+    transition: color 0.3s linear;
 
-/*const useOnClickOutside = (ref, handler) => {
-  React.useEffect(() => {
-    const listener = event => {
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-    document.addEventListener('mousedown', listener);
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
 
-    return () => {
-      document.removeEventListener('mousedown', listener);
-    };
-  },
-  [ref, handler],
-  );
-};*/
+    &:hover {
+      color: #343078;
+    }
+  }
+`
 
 export default Menu;

@@ -19,7 +19,9 @@ main {
 }
 
 h1, h2, h3 {
+  margin-bottom: 0;
   margin-top: 0;
+  padding-bottom: 0;
 }
 
 ul {
@@ -32,7 +34,8 @@ p, label, a, button, select, input {
 }
 
 select {
-  text-align: center;
+  /*text-align: center;*/
+  display: inline-block;
 }
 
 a {
@@ -43,15 +46,11 @@ a:hover {
   color: grey;
 }
 
-input, button {
-  text-align: center;
-}
 input, label {
   margin-right: 8px;
   margin-bottom: 8px;
 }
 label {
-  /*display: block;*/
   margin-top: 12px;
 }
 button {
@@ -64,10 +63,10 @@ form {
   text-align: center;
 }
 
-
 ul.dashboard {
-  width:100%;
+  width: 100%;
 }
+
 .dashboard-item {
   background-color :#3e434e;
   border: 1px solid white;
@@ -78,7 +77,7 @@ ul.dashboard {
   overflow:hidden;
 }
 .dashboard-item_frame {
-  padding:10px;
+  padding: 10px;
 }
 
 .dashboard-item_frame a {
@@ -86,12 +85,12 @@ ul.dashboard {
   text-transform : uppercase;
 }
 @media (min-width: 480px)  { 
-  .dashboard-item {
-    width: 33%;
-  }
   ul.dashboard {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
+  }
+  .dashboard-item {
+    width: 32.5%;
   }
 }
 
@@ -109,9 +108,12 @@ ul.dashboard {
   list-style: none;
 }
 
-input, #units {
-  height: 30px;
+input, #unit {
+  height: 20px;
   width: 100%;
+}
+input {
+  font-size: 80%;
 }
 
 @media (min-width: 480px)  { 

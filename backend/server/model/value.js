@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-
-//Validation require, map to middleware validation
 var schema = new mongoose.Schema({
     label: {  
         type: String, 
@@ -10,13 +8,7 @@ var schema = new mongoose.Schema({
         type: Number,
         default: '' 
     },
-    value2: {
-        type: Number,
-        default: '' 
-    },
     created: Date 
 });
-
 var value = new mongoose.model('Value', schema);
-
 module.exports = value;

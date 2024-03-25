@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 
 /* Heading */
@@ -32,8 +33,8 @@ export default function StationLabel(props) {
     return (
         <span className={inline}>
           { values['labelCustom'] ? values['labelCustom'] : values['label'] } 
-          { values['unitCustom'] === '' ? '' : ' ('+values['unitCustom']+')' }
-          <br />{ sup ? <sup><small> {sup} rec(s)</small></sup> : "" }
+          <small><sup> { values['unitCustom'] === '' ? '' : values['unitCustom'] } </sup></small>
+          <br />{ sup ? <sup><small> {sup} record(s)</small></sup> : "" }
         </span>
     )
 }

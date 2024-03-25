@@ -1,6 +1,3 @@
-// Configs
-const config = require('/app/config.js'), CONFIG = new config();
-
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
@@ -10,12 +7,12 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 
 //Connection establishment
-mongoose.connect('mongodb://mongodb:27017/DBSatProd', {
+mongoose.connect('mongodb://mongodb:27017/unit-store', {
     useNewUrlParser: true,
     useCreateIndex: true
 });
-//Models
-// require('../model/user');
+
+// Models
 var db = mongoose.connection;
 
 //We enebled the Listener
@@ -24,5 +21,5 @@ db.on('error', () => {
 });
 
 db.on('open', () => {
-    console.log('DB Connection established successfully');
+    // console.log('DB Connection established successfully');
 });

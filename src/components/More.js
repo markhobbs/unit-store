@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Graph from './Graph';
@@ -12,25 +13,24 @@ export default function More() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetch(process.env.REACT_APP_API_ENDPOINT + '/values/' + station + '/details')
-      .then(response => {
-        if (response.ok) return response.json();
-        throw response;
-      })
-      .then(json => { 
-        setValues(json) 
-      })
-      .catch(err => {
-        console.error(err);
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  async function fetchDetails() {
+    await fetch( process.env.REACT_APP_API_ENDPOINT + '/values/' + station + '/details' )
+    .then( (response) => { return response.json() })
+    .then( (json) => { 
+      setValues(json) 
+    })
+    .catch(err => {
+      console.error(err);
+      setError(err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  }
 
-  
+  useEffect(() => {
+    fetchDetails()
+  }, [])
 
   if (loading) return <p>Loading...</p>;
   if (error) return "Oops!";
@@ -58,23 +58,17 @@ export default function More() {
       <ul className="dashboard">
         {stations.map((station, key) => (
           <li key={key} className="dashboard-item">
-
             <div className="dashboard-item_frame">
-              
               <h2>
                 <StationLabel 
                   display="inline" 
                   text = { station } 
                   sup = { groupedLabels[station].length } />
               </h2>
-
               <Graph width="320px" title={station} data={groupedLabels[station]} />
               + <a href={'./?station=' + station}>Record</a> + <Link to={'./Dashboard'}>Back</Link> 
             </div>
-
           </li>
         ))}
       </ul>
-    </main>
-  ) 
-};
+    </main>)};
