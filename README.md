@@ -18,18 +18,26 @@ Then the client. Open a new terminal
 
 ### GET stations & Values
 http://localhost:3001/stations
+
 http://localhost:3001/stations/count
+
 http://localhost:3001/stations/{ label }
+
 http://localhost:3001/values
+
 http://localhost:3001/values/count
+
 http://localhost:3001/values/{ label }
+
 
 ### POST stations
 http://localhost:3001/stations/
+
 headers { 
     "Content-Type": 
     "application/json" 
 },
+
 body { 
     "label" : { label }, 
     "labelCustom" : { labelCustom },
@@ -38,10 +46,12 @@ body {
 
 ### POST values
 http://localhost:3001/values/
+
 headers { 
     "Content-Type": 
     "application/json" 
 },
+
 body { 
     "label" : { label }, 
     "value" : { value }
