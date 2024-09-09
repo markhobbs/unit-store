@@ -1,22 +1,21 @@
+/* Menu.js */
+
 import React from "react";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import generateStationLabel from '../utils/generateStationLabel';
+import generateStationLabel from "../utils/generateStationLabel";
 
 const Burger = ({ open, setOpen }) => {
   return (
-    <StyledBurger 
-      open={open} 
-      onClick={ () => setOpen(!open) }
-      >
+    <StyledBurger open={open} onClick={() => setOpen(!open)}>
       <div />
       <div />
       <div />
     </StyledBurger>
-  )
-}
+  );
+};
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
@@ -29,22 +28,19 @@ const Menu = () => {
         <MenuItems open={open} setOpen={setOpen} />
       </div>
     </div>
-  )  
-}
+  );
+};
 
 const MenuItems = ({ open, setOpen }) => {
-  let station = generateStationLabel(16, 20)
+  let station = generateStationLabel(16, 20);
   return (
-    <StyledMenu 
-      onClick={ () => setOpen(!open) } 
-      open={open}
-    >
-      <Link to="/dashboard">Stations Dashboard</Link>
-      <a href={ '/station?station=' + station }>Create a new station</a>
+    <StyledMenu onClick={() => setOpen(!open)} open={open}>
+      <Link to="/dashboard">Stations</Link>
+      <a href={"/station?station=" + station}>Create Station</a>
       <Link to="/logs">Logs</Link>
     </StyledMenu>
-  )
-}
+  );
+};
 
 const StyledBurger = styled.button`
   position: absolute;
@@ -68,33 +64,33 @@ const StyledBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: ${({ open }) => open ? '#0D0C1D' : '#EFFFFA'};
+    background: ${({ open }) => (open ? "#0D0C1D" : "#EFFFFA")};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
 
     :first-child {
-      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
     }
 
     :nth-child(2) {
-      opacity: ${({ open }) => open ? '0' : '1'};
-      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
     }
 
     :nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
     }
   }
-`
+`;
 const StyledMenu = styled.nav`
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #EFFFFA;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  background: #effffa;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   height: 100vh;
   text-align: left;
   padding: 2rem;
@@ -105,8 +101,8 @@ const StyledMenu = styled.nav`
   width: 50%;
 
   @media (max-width: 576px) {
-      //width: 100%;
-      width: 80%;
+    //width: 100%;
+    width: 80%;
   }
 
   a {
@@ -115,7 +111,7 @@ const StyledMenu = styled.nav`
     padding: 1rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: #0D0C1D;
+    color: #0d0c1d;
     text-decoration: none;
     transition: color 0.3s linear;
 
@@ -128,6 +124,6 @@ const StyledMenu = styled.nav`
       color: #343078;
     }
   }
-`
+`;
 
 export default Menu;

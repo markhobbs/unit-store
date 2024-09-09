@@ -3,13 +3,12 @@ Allows for inputing of cronological data values using REST.
 Mongo Database, Express Api Backend, with a ReactJS frontend.
 
 ## Quick Docker Start 
-Clone the project and build containers using Docker.
+Clone the project into a docker privilaged location and build containers using Docker.
 ```npm install && cd backend && npm install```
-
-```docker-compose up -d --build```
+```cd .. && docker-compose up -d --build```
 
 ## Local Start
-Install MongoDB locally and set the backend mongoose.connect to localhost
+Install MongoDB locally and set the backend mongoose.connect to localhost.
 ```npm install && cd backend && npm install```
 
 ```npm start```
