@@ -1,36 +1,34 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import Graph from './Graph';
-import StationLabel from './StationLabel';
-
-let search = window.location.search;
-let params = new URLSearchParams(search);
-let station = params.get('station') || 'stationX0';
+import Graph from '../components/Graph';
+import StationLabel from '../components/StationLabel';
 
 export default function More() {
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  let station = params.get('station') || 'stationX0';
   const [values, setValues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function fetchDetails() {
-    await fetch( process.env.REACT_APP_API_ENDPOINT + '/values/' + station + '/details' )
-    .then( (response) => { return response.json() })
-    .then( (json) => { 
-      setValues(json) 
-    })
-    .catch(err => {
-      console.error(err);
-      setError(err);
-    })
-    .finally(() => {
-      setLoading(false);
-    });
-  }
-
   useEffect(() => {
+    async function fetchDetails() {
+      await fetch( process.env.REACT_APP_API_ENDPOINT + '/values/' + station + '/details' )
+      .then( (response) => { return response.json() })
+      .then( (json) => { 
+        setValues(json) 
+      })
+      .catch(err => {
+        console.error(err);
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+    }
     fetchDetails()
-  }, [])
+  }, [station])
 
   if (loading) return <p>Loading...</p>;
   if (error) return "Oops!";
@@ -66,7 +64,7 @@ export default function More() {
                   sup = { groupedLabels[station].length } />
               </h2>
               <Graph width="320px" title={station} data={groupedLabels[station]} />
-              + <a href={'./?station=' + station}>Record</a> + <Link to={'./Dashboard'}>Back</Link> 
+              + <a href={'/?station=' + station}>Record</a> + <Link to={'/Dashboard'}>Back</Link> 
             </div>
           </li>
         ))}

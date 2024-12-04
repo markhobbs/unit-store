@@ -3,8 +3,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Graph from "./Graph";
-import StationLabel from "./StationLabel";
+import Graph from '../components/Graph';
+import StationLabel from '../components/StationLabel';
 import generateStationLabel from "../utils/generateStationLabel";
 
 export default function Dashboard() {
