@@ -4,12 +4,13 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import generateStationLabel from "../utils/generateStationLabel";
 
 const Burger = ({ open, setOpen }) => {
   return (
-    <StyledBurger open={open} onClick={() => setOpen(!open)}>
+    <StyledBurger 
+      open={open} 
+      onClick={() => setOpen(!open)}>
       <div />
       <div />
       <div />
@@ -24,8 +25,13 @@ const Menu = () => {
   return (
     <div data-testid="menu">
       <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <MenuItems open={open} setOpen={setOpen} />
+        <Burger 
+          open={open} 
+          setOpen={setOpen} />
+
+        <MenuItems 
+          open={open} 
+          setOpen={setOpen} />
       </div>
     </div>
   );
@@ -35,9 +41,9 @@ const MenuItems = ({ open, setOpen }) => {
   let station = generateStationLabel(16, 20);
   return (
     <StyledMenu onClick={() => setOpen(!open)} open={open}>
-      <Link to="/dashboard">Stations</Link>
-      <a href={"/station?station=" + station}>Create Station</a>
-      <Link to="/logs">Logs</Link>
+      <Link to={`./`}>Dashboard</Link>
+      <Link to={`/station/create?station=${station}`}>Create Station</Link>
+      <Link to={`/logs`}>Logs</Link>
     </StyledMenu>
   );
 };

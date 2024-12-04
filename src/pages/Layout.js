@@ -5,9 +5,9 @@ import { Outlet } from "react-router-dom";
 import Menu from '../components/Menu';
 
 const Layout = () => {
-  return <div> 
+  return <> 
         <Menu />
         <Outlet />
-      </div>
+      </>
 };
 export default Layout;

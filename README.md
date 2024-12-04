@@ -1,61 +1,77 @@
 # Unit Store
-Allows for inputing of cronological data values using REST.
-Mongo Database, Express Api Backend, with a ReactJS frontend.
 
-## Quick Docker Start 
-Clone the project into a docker privilaged location and build containers using Docker.
-```npm install && cd backend && npm install```
-```cd .. && docker-compose up -d --build```
+Unit Store allows for the input of chronological data values using REST. It features a MongoDB database, an Express API backend, and a ReactJS frontend.
+
+## Quick Docker Start
+
+Clone the project into a Docker-privileged location and build the containers using Docker.
+
+```sh
+npm install && cd backend && npm install
+cd .. && docker-compose up -d --build
+```
 
 ## Local Start
-Install MongoDB locally and set the backend mongoose.connect to localhost.
-```npm install && cd backend && npm install```
 
-```npm start```
+Install MongoDB locally and set the backend `mongoose.connect` to `localhost`.
 
-Then the client. Open a new terminal.
+```sh
+npm install && cd backend && npm install
+npm start
+```
 
-```npm start```
+Then, start the client in a new terminal.
+
+```sh
+npm start
+```
 
 ## API Endpoints
 
 ### GET View Stations & Values
-http://localhost:3001/stations
 
-http://localhost:3001/stations/count
-
-http://localhost:3001/stations/{ label }
-
-http://localhost:3001/values
-
-http://localhost:3001/values/count
-
-http://localhost:3001/values/{ label }
-
+- `GET /stations` - View all stations
+- `GET /stations/count` - Get the count of stations
+- `GET /stations/{label}` - View a specific station by label
+- `GET /values` - View all values
+- `GET /values/count` - Get the count of values
+- `GET /values/{label}` - View values by label
 
 ### POST Create Stations
-http://localhost:3001/stations/
 
-headers { 
-    "Content-Type": 
-    "application/json" 
-},
+- `POST /stations/`
 
-body { 
-    "label" : { label }, 
-    "labelCustom" : { labelCustom },
-    "unitCustom" : { unitCustom } 
-}
+    **Headers:**
+    ```json
+    {
+        "Content-Type": "application/json"
+    }
+    ```
+
+    **Body:**
+    ```json
+    {
+        "label": "{label}",
+        "labelCustom": "{labelCustom}",
+        "unitCustom": "{unitCustom}"
+    }
+    ```
 
 ### POST Create Values
-http://localhost:3001/values/
 
-headers { 
-    "Content-Type": 
-    "application/json" 
-},
+- `POST /values/`
 
-body { 
-    "label" : { label }, 
-    "value" : { value }
-}
+    **Headers:**
+    ```json
+    {
+        "Content-Type": "application/json"
+    }
+    ```
+
+    **Body:**
+    ```json
+    {
+        "label": "{label}",
+        "value": "{value}"
+    }
+    ```

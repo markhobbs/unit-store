@@ -4,7 +4,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Graph from '../components/Graph';
-import StationLabel from '../components/StationLabel';
+import StationHeader from '../components/StationHeader';
 import generateStationLabel from "../utils/generateStationLabel";
 
 export default function Dashboard() {
@@ -13,7 +13,7 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_ENDPOINT + "/values")
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/values`)
       .then((response) => {
         if (response.ok) return response.json();
         throw response;
@@ -50,39 +50,33 @@ export default function Dashboard() {
     stations.push(label);
   });
 
-  return (
-    <main>
-      <h1>Stations</h1>
-      {stations.length > 0 ? (
-        <p>Latest 30 record(s) from each station.</p>
-      ) : (
-        <p>
-          No records as yet. First create a new{" "}
-          <a href={"/station?station=" + station}>Station</a>.
-        </p>
-      )}
-      <ul className="dashboard">
-        {stations.map((station, key) => (
-          <li key={key} className="dashboard-item">
-            <div className="dashboard-item_frame">
-              <h2>
-                <StationLabel
-                  display="inline"
-                  text={station}
-                  sup={groupedLabels[station].length}
-                />
-              </h2>
-              <Graph
-                width="320px"
-                title={station}
-                data={groupedLabels[station]}
-              />
-              <a href={"./?station=" + station}>+</a> &nbsp;
-              <Link to={"./more?station=" + station}>...</Link>
-            </div>
-          </li>
-        ))}
+  return <main>
+      <h1>Dashboard</h1>
+      <h2>All Stations</h2>
+      
+      <ul className="list">
+        {stations && stations.map((station, key) => <li key={key} className="list-item">
+          
+          <StationHeader
+            display="inline"
+            value={station}
+            sup={groupedLabels[station].length}
+          />
+
+          <Graph
+            width="320px"
+            title={station}
+            data={groupedLabels[station]}
+          />
+
+          <Link to={`/record?station=${station}`}>Record</Link>{' '}
+          <Link to={`/station/details?station=${station}`}>Details</Link>
+
+        </li>)}
       </ul>
+
+      {stations.length > 0 ? <em>Latest 30 record(s) from each station.</em>
+        : <em>Currently No Records. Create New <Link to={`/station/create?station=${station}`}>Station</Link>.</em>}
+    
     </main>
-  );
-}
+};

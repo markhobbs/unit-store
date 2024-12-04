@@ -1,16 +1,26 @@
+/* Details.js */
+
 import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Graph from '../components/Graph';
-import StationLabel from '../components/StationLabel';
+import StationHeader from '../components/StationHeader';
 
-export default function More() {
+export default function Details() {
   let search = window.location.search;
   let params = new URLSearchParams(search);
   let station = params.get('station') || 'stationX0';
   const [values, setValues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [addClass, setAddClass] = useState(false);
+
+  useEffect(() => {
+    if (values.length === 1) {
+      setAddClass(true);
+    } 
+  }, [values])
+
 
   useEffect(() => {
     async function fetchDetails() {
@@ -47,26 +57,25 @@ export default function More() {
   let stations = [];
 
   Object.keys(groupedLabels).forEach((label, key) => {
-    stations.push( label );
+    stations.push(label);
   })
 
   return (
     <main>
-      <h1>More</h1>
-      <ul className="dashboard">
-        {stations.map((station, key) => (
-          <li key={key} className="dashboard-item">
-            <div className="dashboard-item_frame">
-              <h2>
-                <StationLabel 
-                  display="inline" 
-                  text = { station } 
-                  sup = { groupedLabels[station].length } />
-              </h2>
+      <h1>Details</h1>
+      <ul className="list">
+        {stations.map((station, key) => <li key={key} className={addClass? "list-item list-item-full": "list-item"}>
+              <StationHeader 
+                display="inline" 
+                value={station} 
+                sup={groupedLabels[station].length} />
+      
               <Graph width="320px" title={station} data={groupedLabels[station]} />
-              + <a href={'/?station=' + station}>Record</a> + <Link to={'/Dashboard'}>Back</Link> 
-            </div>
+              
+              <Link to={`/record?station=${station}`}>Record</Link>{' '}
+              <Link to={'/'}>Dashboard</Link>
+
           </li>
-        ))}
+        )}
       </ul>
     </main>)};

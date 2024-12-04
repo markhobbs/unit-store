@@ -1,9 +1,10 @@
-/* Station.js */
+/* Create.js */
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Select from '../components/Select';
 
-const Station = () => {
+const Create = () => {
   let search = window.location.search;
   let params = new URLSearchParams(search);
   let station = params.get('station') || 'stationX0';
@@ -41,11 +42,11 @@ const Station = () => {
 
   return (
     <main>
-      <h1>Create Station</h1>
-      <br />
+      <h2>Create Station</h2>
+
       {submitted ? (
         <p>
-          Updated! <Link to={"/?station=" + station}>record</Link> a value
+          Updated! <Link to={"/record/?station=" + station}>record</Link> a value
         </p>
       ) : (
         <form onSubmit={onSubmit}>
@@ -60,11 +61,11 @@ const Station = () => {
           <br />
           <br />
           <button type="submit">Create</button> or return to{" "}
-          <Link to="/dashboard">dashboard</Link>
+          <Link to='/'>dashboard</Link>
         </form>
       )}
     </main>
   );
 };
 
-export default Station;
+export default Create;

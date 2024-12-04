@@ -1,7 +1,9 @@
+/* Logs.js */
+
 import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import StationLabel from '../components/StationLabel';
+import StationHeader from '../components/StationHeader';
 import moment from 'moment';
 moment().format();
 
@@ -41,17 +43,21 @@ export default function Logs() {
       }
 
       <ul className="logs">
-        { values.map((value) => (
-          <li key={value._id} className="log-item">
-            <h3 className="inline">{value.value} </h3>
-            <a href={'/?station=' + value.label}>
-              <StationLabel 
+        { values.map((value) => <li key={value._id} className="log-item">
+            
+            <h3 className="inline">
+              {value.value}
+            </h3>
+
+            <Link to={`/station/details?station=${value.label}`}>
+              <StationHeader 
                 display="inline" 
-                text = { value.label } />
-            </a>
-            <small>{ moment(value.created).format('LLLL') }</small>
-          </li>
-        ))}
+                value={value.label} />
+            </Link>
+
+            <small>{moment(value.created).format('LLLL')}</small>
+
+          </li>)}
        </ul>
     </main>
   )  
